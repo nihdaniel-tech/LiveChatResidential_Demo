@@ -1,0 +1,73 @@
+<html>
+<head>
+</head>
+<body>
+	<style type='text/css'>
+		.embeddedServiceHelpButton .helpButton .uiButton {
+			background-color: #005290;
+			font-family: "Arial", sans-serif;
+		}
+		.embeddedServiceHelpButton .helpButton .uiButton:focus {
+			outline: 1px solid #005290;
+		}
+	</style>
+
+	<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
+	<script type='text/javascript'>
+		var initESW = function(gslbBaseURL) {
+			embedded_svc.settings.displayHelpButton = true; //Or false
+			embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+
+			//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
+			//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
+
+			//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
+			//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+
+			// Settings for Chat
+			//embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
+				// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
+				// Returns a valid button ID.
+			//};
+			//embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
+			//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
+			//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
+	        
+	        //Add custom prechat logic doFind and doCreate
+	        embedded_svc.settings.extraPrechatFormDetails = [{"label":"Lead Type","value":"Residential","transcriptFields":[],"displayToAgent":true}] ;
+	        
+	        embedded_svc.settings.extraPrechatInfo = [{"entityName":"Lead","showOnCreate":true,"saveToTranscript":"Lead","entityFieldMaps":[{"isExactMatch":true,"fieldName":"FirstName","doCreate":true,"doFind":false,"label":"First Name"},{"isExactMatch":true,"fieldName":"LastName","doCreate":true,"doFind":false,"label":"Last Name"},{"isExactMatch":true,"fieldName":"Email","doCreate":true,"doFind":false,"label":"Email"},{"isExactMatch":true,"fieldName":"MobilePhone","doCreate":true,"doFind":false,"label":"Mobile"},{"isExactMatch":true,"fieldName":"Company","doCreate":true,"doFind":false,"label":"Company"},{"isExactMatch":true,"fieldName":"Area__c","doCreate":true,"doFind":false,"label":"Area"},{"isExactMatch":true,"fieldName":"Site_ID__c","doCreate":true,"doFind":false,"label":"Site ID"},{"isExactMatch":true,"fieldName":"Address__c","doCreate":true,"doFind":false,"label":"Address"},{"isExactMatch":true,"fieldName":"Business_Industry__c","doCreate":true,"doFind":false,"label":"Business Industry"},{"isExactMatch":true,"fieldName":"Lead_Type__c","doCreate":true,"doFind":false,"label":"Lead Type"}]}];
+
+			embedded_svc.settings.enabledFeatures = ['LiveAgent'];
+			embedded_svc.settings.entryFeature = 'LiveAgent';
+
+			embedded_svc.init(
+				'https://ptlinknettbk--dev.my.salesforce.com',
+				'https://dev-linknet.cs111.force.com',
+				gslbBaseURL,
+				'00D1e0000008oz8',
+				'Chat_Group',
+				{
+					baseLiveAgentContentURL: 'https://c.la2-c1cs-ukb.salesforceliveagent.com/content',
+					deploymentId: '5721e000000003y',
+					buttonId: '5731e000000005V',
+					baseLiveAgentURL: 'https://d.la2-c1cs-ukb.salesforceliveagent.com/chat',
+					eswLiveAgentDevName: 'Chat_Group',
+					isOfflineSupportEnabled: false
+				}
+			);
+		};
+
+		if (!window.embedded_svc) {
+			var s = document.createElement('script');
+			s.setAttribute('src', 'https://ptlinknettbk--dev.my.salesforce.com/embeddedservice/5.0/esw.min.js');
+			s.onload = function() {
+				initESW(null);
+			};
+			document.body.appendChild(s);
+		} else {
+			initESW('https://service.force.com');
+		}
+</script>
+</body>
+</html>
