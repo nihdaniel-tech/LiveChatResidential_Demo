@@ -33,11 +33,11 @@
 			//embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
 			//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
 			//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
-	        
-	        //Add custom prechat logic doFind and doCreate
-	        embedded_svc.settings.extraPrechatFormDetails = [{"label":"Lead Type","value":"Residential","transcriptFields":[],"displayToAgent":true}] ;
-	        
-	        embedded_svc.settings.extraPrechatInfo = [{"entityName":"Lead","showOnCreate":true,"saveToTranscript":"Lead","entityFieldMaps":[{"isExactMatch":true,"fieldName":"FirstName","doCreate":true,"doFind":false,"label":"First Name"},{"isExactMatch":true,"fieldName":"LastName","doCreate":true,"doFind":false,"label":"Last Name"},{"isExactMatch":true,"fieldName":"Email","doCreate":true,"doFind":false,"label":"Email"},{"isExactMatch":true,"fieldName":"MobilePhone","doCreate":true,"doFind":false,"label":"Mobile"},{"isExactMatch":true,"fieldName":"Company","doCreate":true,"doFind":false,"label":"Company"},{"isExactMatch":true,"fieldName":"Area__c","doCreate":true,"doFind":false,"label":"Area"},{"isExactMatch":true,"fieldName":"Site_ID__c","doCreate":true,"doFind":false,"label":"Site ID"},{"isExactMatch":true,"fieldName":"Address__c","doCreate":true,"doFind":false,"label":"Address"},{"isExactMatch":true,"fieldName":"Business_Industry__c","doCreate":true,"doFind":false,"label":"Business Industry"},{"isExactMatch":true,"fieldName":"Lead_Type__c","doCreate":true,"doFind":false,"label":"Lead Type"}]}];
+
+		//Add custom prechat logic doFind and doCreate
+		embedded_svc.settings.extraPrechatFormDetails = [{"label":"Lead Type","value":"Residential","transcriptFields":[],"displayToAgent":true},{"label":"Lead Source","value":"Live Chat","transcriptFields":[],"displayToAgent":true}] ;
+
+		embedded_svc.settings.extraPrechatInfo = [{"entityName":"Lead","showOnCreate":true,"saveToTranscript":"Lead","entityFieldMaps":[{"isExactMatch":true,"fieldName":"FirstName","doCreate":true,"doFind":false,"label":"First Name"},{"isExactMatch":true,"fieldName":"LastName","doCreate":true,"doFind":false,"label":"Last Name"},{"isExactMatch":true,"fieldName":"Email","doCreate":true,"doFind":false,"label":"Email"},{"isExactMatch":true,"fieldName":"MobilePhone","doCreate":true,"doFind":false,"label":"Mobile"},{"isExactMatch":true,"fieldName":"Company","doCreate":true,"doFind":false,"label":"Company"},{"isExactMatch":true,"fieldName":"Area__c","doCreate":true,"doFind":false,"label":"Area"},{"isExactMatch":true,"fieldName":"Site_ID__c","doCreate":true,"doFind":false,"label":"Site ID"},{"isExactMatch":true,"fieldName":"Address__c","doCreate":true,"doFind":false,"label":"Address"},{"isExactMatch":true,"fieldName":"Business_Industry__c","doCreate":true,"doFind":false,"label":"Business Industry"},{"isExactMatch":true,"fieldName":"Lead_Type__c","doCreate":true,"doFind":false,"label":"Lead Type"},{"isExactMatch":true,"fieldName":"LeadSource","doCreate":true,"doFind":false,"label":"Lead Source"}]}];
 
 			embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 			embedded_svc.settings.entryFeature = 'LiveAgent';
@@ -69,6 +69,6 @@
 		} else {
 			initESW('https://service.force.com');
 		}
-</script>
+	</script>
 </body>
 </html>
